@@ -13,15 +13,17 @@ years = ["2015_clean.csv", "2016_clean.csv", "2017_clean.csv", "2018_clean.csv",
 
 year_now = 2015
 
-for year in years:
+fig_name = ['H3.2.1.png', 'H3.2.2.png', 'H3.2.3.png', 'H3.2.4.png', 'H3.2.5.png']
+
+for index1, year in enumerate(years):
     df = pd.read_csv(year)
     df = df.drop('Country', axis = 1)
     df = df.groupby('Region').min().round(2)
     df = df.sort_values("Happiness Rank")
     df.reset_index().to_csv("plot2.csv", index = False)
 
-    for index, rank in enumerate(df['Happiness Rank']):
-        df['Happiness Rank'].values[index] = index+1
+    for index2, rank in enumerate(df['Happiness Rank']):
+        df['Happiness Rank'].values[index2] = index2+1
 
     df = df.reset_index()
 
@@ -30,6 +32,8 @@ for year in years:
     ax.bar_label(ax.containers[0])
 
     ax.invert_yaxis()
+    ax.figure.savefig(fig_name[index1], bbox_inches = "tight")
+    
     year_now += 1
     
 # =============================================================================

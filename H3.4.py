@@ -22,7 +22,10 @@ df_combined = df_combined.drop(rem_col, axis = 1)
 matrix = df_combined.corr()
 
 #plotting correlation matrix 
-sns.heatmap(matrix, cmap="Blues", annot = True)
+plot = sns.heatmap(matrix, cmap="Blues", annot = True)
+
+fig = plot.get_figure()
+fig.savefig('H3.4.0.png', bbox_inches = "tight")
 
 # =============================================================================
 # Inference: The correlation plot shows GDP, social support, life expectancy

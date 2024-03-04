@@ -13,7 +13,9 @@ years = ["2017_clean.csv", "2018_clean.csv", "2019_clean.csv"]
 
 year_now = 2017
 
-for year in years: 
+fig_name = ['H3.3.1.png', 'H3.3.2.png', 'H3.3.3.png', 'H3.3.4.png', 'H3.3.5.png']
+
+for index, year in enumerate(years): 
     df = pd.read_csv(year)
     region_of_interest = ['South America', 'Australia']
     filter_df = df[df['Region'].isin(region_of_interest)]
@@ -25,6 +27,8 @@ for year in years:
                      title = "Year {year}".format(year = year_now))
     ax.bar_label(ax.containers[0])
     ax.legend(bbox_to_anchor=(1.0, 1.0))
+    
+    ax.figure.savefig(fig_name[index], bbox_inches = "tight")
     
     year_now += 1
 

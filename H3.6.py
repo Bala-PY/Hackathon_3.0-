@@ -29,7 +29,10 @@ df = df_combined.drop(rem_col, axis = 1)
 matrix = df.corr()
 
 #plotting correlation matrix 
-sns.heatmap(matrix, cmap="Blues", annot = True)
+plot = sns.heatmap(matrix, cmap="Blues", annot = True)
+
+fig = plot.get_figure()
+fig.savefig('H3.6.0.png', bbox_inches = "tight")
 
 # =============================================================================
 # Inference: Demographic factors impact on the overall happiness score stands 
